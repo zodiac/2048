@@ -21,6 +21,11 @@ $game-container-background: #bbada0;
 
 $transition-speed: 100ms;
 
+.notransition * {
+  transition: none !important;
+  animation: none !important;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -101,7 +106,7 @@ h1.title {
     font-weight: bold;
     color: rgba($text-color, .9);
     z-index: 100;
-    @include animation(move-up 600ms ease-in);
+    @include animation(move-up $transition-speed*6 ease-in);
     @include animation-fill-mode(both);
   }
 }
@@ -140,9 +145,29 @@ hr {
   margin-bottom: 30px;
 }
 
-.container {
+#two-oh-container {
   width: $field-width;
-  margin: 0 auto;
+  margin-left: 15%;
+  margin-right: 5%;
+  display: inline-block;
+}
+
+#ai-container {
+  display: inline-block;
+  vertical-align: top;
+  width: $field-width;
+}
+
+.game-container {
+  outline: none;
+}
+
+.game-container:focus {
+  box-shadow: 0 0 10px #888888;
+}
+
+.output-move {
+  color: lightgray;
 }
 
 @include keyframes(fade-in) {
@@ -231,7 +256,7 @@ hr {
 	}
       }
 
-      @include animation(fade-in 800ms ease $transition-speed * 12);
+      @include animation(fade-in $transition-speed*8 ease $transition-speed * 12);
       @include animation-fill-mode(both);
 
       &.game-won {
@@ -427,7 +452,7 @@ hr {
 }
 
 .tile-new .tile-inner {
-  @include animation(appear 200ms ease $transition-speed);
+  @include animation(appear $transition-speed*2 ease $transition-speed);
   @include animation-fill-mode(backwards);
 }
 
@@ -447,7 +472,7 @@ hr {
 
 .tile-merged .tile-inner {
   z-index: 20;
-  @include animation(pop 200ms ease $transition-speed);
+  @include animation(pop $transition-speed*2 ease $transition-speed);
   @include animation-fill-mode(backwards);
 }
 
@@ -461,15 +486,27 @@ hr {
   margin-bottom: 0;
 }
 
-.restart-button {
+.button {
   @include button;
-  display: block;
-  text-align: center;
-  float: right;
+  margin-bottom: 0.1em;
 }
 
 .game-explanation {
   margin-top: 50px;
+}
+
+#ai-output * {
+  margin: 0;
+}
+
+#ai-output {
+  height: 10em;
+  overflow: auto;
+}
+
+#ai-code {
+  width: 100%;
+  height: 10em;
 }
 
 @include smaller($mobile-threshold) {

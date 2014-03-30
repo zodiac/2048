@@ -1,4 +1,8 @@
 @import url(fonts/clear-sans.css);
+.notransition * {
+  transition: none !important;
+  animation: none !important; }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -115,9 +119,25 @@ hr {
   margin-top: 20px;
   margin-bottom: 30px; }
 
-.container {
+#two-oh-container {
   width: 500px;
-  margin: 0 auto; }
+  margin-left: 15%;
+  margin-right: 5%;
+  display: inline-block; }
+
+#ai-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 500px; }
+
+.game-container {
+  outline: none; }
+
+.game-container:focus {
+  box-shadow: 0 0 10px #888888; }
+
+.output-move {
+  color: lightgray; }
 
 @-webkit-keyframes fade-in {
   0% {
@@ -486,7 +506,7 @@ hr {
   line-height: 42px;
   margin-bottom: 0; }
 
-.restart-button {
+.button {
   display: inline-block;
   background: #8f7a66;
   border-radius: 3px;
@@ -495,12 +515,21 @@ hr {
   color: #f9f6f2;
   height: 40px;
   line-height: 42px;
-  display: block;
-  text-align: center;
-  float: right; }
+  margin-bottom: 0.1em; }
 
 .game-explanation {
   margin-top: 50px; }
+
+#ai-output * {
+  margin: 0; }
+
+#ai-output {
+  height: 10em;
+  overflow: auto; }
+
+#ai-code {
+  width: 100%;
+  height: 10em; }
 
 @media screen and (max-width: 520px) {
   html, body {

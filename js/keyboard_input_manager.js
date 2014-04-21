@@ -51,7 +51,6 @@ KeyboardInputManager.prototype.listen = function () {
 
   // Respond to direction keys
   $(".game-container").keydown(function (event) {
-    console.log(event.target);
     var modifiers = event.altKey || event.ctrlKey || event.metaKey ||
                     event.shiftKey;
     var mapped    = map[event.which];
@@ -71,7 +70,7 @@ KeyboardInputManager.prototype.listen = function () {
 
   // Respond to button presses
   this.bindButtonPress(".retry-button", this.restart);
-  this.bindButtonPress(".restart-button", this.restart);
+  this.bindButtonPress("#restart-button", this.restart);
   this.bindButtonPress(".keep-playing-button", this.keepPlaying);
 
   // Respond to swipe events
